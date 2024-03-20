@@ -1,4 +1,4 @@
-# Library of Congress Call Number Sorter
+# LC Sort: Library of Congress Call Number Sorter
 
 ## Overview
 This application sorts .xlsx files containing Library of Congress (LoC) call numbers located in the first column (Column A). Designed to streamline the organization of collections cataloged with LoC call numbers, this tool ensures efficient sorting directly from an Excel spreadsheet, enhancing accessibility and manageability.
