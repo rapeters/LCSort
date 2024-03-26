@@ -2,7 +2,11 @@
 
 import tkinter as tk
 from tkinter import filedialog, messagebox
+from openpyxl import load_workbook
+import pandas as pd
+import os
 import sys
+import pycallnumber as pycn
 
 def show_instructions_and_confirm():
     # Create a root window
@@ -42,10 +46,6 @@ if show_instructions_and_confirm():
 else:
     # User pressed Cancel, exit the script
     sys.exit()
-
-import pandas as pd
-import os
-import pycallnumber as pycn
 
 if input_file_path:
     # Reading the input Excel file into a DataFrame
@@ -93,6 +93,15 @@ if input_file_path:
     # Save the processed DataFrame to an Excel file
     df_processed.to_excel(output_file_path, index=False)
 
+    # Open the saved Excel file and modify header formatting
+    wb = load_workbook(output_file_path)
+    ws = wb.active
+
+    for cell in ws[1]:  # ws[1] accesses the first row which is the header row
+        cell.style = 'Normal'
+
+    wb.save(output_file_path)
+    
 # Display a completion message
 root = tk.Tk()
 root.withdraw()  # Hide the main window
